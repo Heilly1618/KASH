@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear foro</title>
+    <link rel="stylesheet" href="../css/formulario_foro.css">
+</head>
+<body>
+    <header>
+        <img class="logo" src="../img/Logo-removebg-preview (1).png" alt="Logo">
+        <p>CREAR FORO</p>
+        <h1>KASH</h1>
+      </header>
+    <form action="../php/formulario_foro.php"method="post">
+        <h2>Formulario foro</h2>  
+        <label for="nombre completo"></label>
+        <p>Nombre completo:</p>
+        <input class="pregunta" type="text" id="nombre_completo" name="nombre completo" required><br><br>
+
+        <label for="fecha"></label>
+        <p>Fecha:</p>
+        <input class="pregunta"  type="date" id="fecha" name="fecha" required><br><br>
+
+        <label for="trimestre" name="trimestre"></label>
+        <p>Trimestre: </p>
+        <select class="pregunta"  id="trimestre" name="trimestre" required>
+            <option value="1">Primer trimestre</option>
+            <option value="2">Segundo trimestre</option>
+            <option value="3">Tercer trimestre</option>
+            <option value="4">Cuarto trimestre</option>
+            <option value="5">Quinto trimestre</option>
+            <option value="6">Sexto trimestre</option>
+            <option value="7">Septimo trimestre</option>
+            </select><br><br>
+
+            <label for="tema"></label>
+            <p>Tema:</p>
+            <input class="pregunta"  type="text" id="tema" name="tema" required><br><br>
+
+
+            <label for="contenido"></label>
+            <p>Contenido:</p>
+            <textarea class="pregunta"  name="contenido" id="contenido"></textarea> <br></br>
+
+            <button type="submit" class="boton">Enviar</button>
+            </form>
+</body>
+</html>

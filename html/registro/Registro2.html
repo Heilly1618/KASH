@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse</title>
+    <link rel="stylesheet" href="../css/Registro.css">
+    <script>
+         function guardarDatos() {
+                sessionStorage.setItem('correo', document.getElementById('correo').value);
+                sessionStorage.setItem('confirmarCorreo', document.getElementById('confirmar_correo').value);
+                sessionStorage.setItem('numeroTelefonico', document.getElementById('numero_telefonico').value);
+            }
+        function validarFormulario() {
+            const correo = document.getElementById("correo");
+            const confirmar_correo = document.getElementById("confirmar_correo");
+            const numero = document.getElementById("numero_telefonico");
+
+            const correoValue = correo.value.trim();
+            const confirmarCorreoValue = confirmar_correo.value.trim();
+            const numeroValue = numero.value.trim();
+
+          
+            correo.classList.remove('campo-obligatorio');
+            confirmar_correo.classList.remove('campo-obligatorio');
+            numero.classList.remove('campo-obligatorio');
+
+            let valid = true;
+
+            if (correoValue === '') {
+                correo.classList.add('campo-obligatorio');
+                valid = false;
+            }
+            if (confirmarCorreoValue === '') {
+                confirmar_correo.classList.add('campo-obligatorio');
+                valid = false;
+            }
+            if (numeroValue === '') {
+                numero.classList.add('campo-obligatorio');
+                valid = false;
+            }
+
+            // Validar coincidencia de correos
+            if (correoValue !== confirmarCorreoValue) {
+                alert('El correo no coincide');
+                correo.classList.add('campo-obligatorio');
+                confirmar_correo.classList.add('campo-obligatorio');
+                valid = false;
+            }
+
+            if (!valid) {
+                alert('Por favor, complete todos los campos obligatorios.');
+                return;
+            }
+            guardarDatos();
+            window.location.href = "../html/Registro3.html"; 
+        }
+
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="/img/Logo-removebg-preview (1).png" alt="">
+            <h1>KASH</h1>
+        </div>
+        <nav>
+            <li><a href="/html/Principal.html">volver al inicio</a></li>
+        </nav>
+    </header>
+    <main>
+        <form  onsubmit="validarFormulario();" action="registro3.html" method="post">
+            <h4>DATOS DE CONTACTO</h4>
+            <label for="correo">
+                <input id="correo" class="Pregunta" type="email" name="correo" placeholder="Correo" required>
+            </label>
+            <label for="confirmar_correo">
+                <input id="confirmar_correo" class="Pregunta" type="email" name="confirmar_correo" placeholder="Confirmar correo" required>
+            </label>
+            <label for="numero_telefonico">
+                <input id="numero_telefonico" class="Pregunta" type="text" name="numero_telefonico" placeholder="Numero Telefonico" required>
+            </label>
+            <a id="botonEnlace" class="boton" href="#" onclick="validarFormulario()">Continuar</a>
+            <p><a href="#">¿Ya tengo cuenta?</a></p>
+        </form>
+    </main>
+</body>
+</html>

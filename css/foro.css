@@ -1,0 +1,441 @@
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f0f0f0;
+}
+
+
+header {
+  background-color: rgb(94, 179, 25);
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header img {
+  width: 50px;
+}
+
+header h1 {
+  text-align: center;
+}
+
+main {
+  padding: 20px;
+}
+
+/* Estilos para el modal */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  background-color: rgba(0, 0, 0, 0.5); 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+}
+
+/* Estilos para el contenido del modal */
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilo para el botón de cerrar */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+form {
+  background-color: rgb(230, 230, 230);
+  width: 200px;
+  padding: 40px;
+  margin: 20px;
+  margin-top: 25px;
+  border-radius: 25px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: #000;
+  overflow: hidden;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+input {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  width: 200px;
+  margin-top: 5px;
+}
+
+form label{
+  color:rgb(94, 179, 25)
+}
+
+.formulario .enlaces {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form .boton {
+  text-decoration: none;
+  background-color: rgb(57, 169, 0);
+  color: white;
+  padding: 10px 30px;
+  border-radius: 15px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* Estilo para el botón flotante de foro */
+.btn-flotante2 {
+  position: fixed;
+  bottom: 20px;
+  left: 20px; /* Cambia a left para posicionar a la izquierda */
+  background-color: rgb(4, 50, 77); /* Color de fondo atractivo */
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-flotante2 img {
+  width: 24px;
+  height: 24px;
+}
+
+.btn-flotante2:hover {
+  background-color: #0056b3; 
+  transform: scale(1.1); 
+}
+
+
+
+/* Estilo para el botón flotante */
+.btn-flotante {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgb(4, 50, 77); /* Color de fondo atractivo */
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-flotante img {
+  width: 24px;
+  height: 24px;
+}
+
+.btn-flotante:hover {
+  background-color: #0056b3; 
+  transform: scale(1.1); 
+}
+
+/* Estilo para el formulario PQR */
+.formulario-pqr {
+  display: none; /* Oculto por defecto */
+  position: fixed; /* Posición fija */
+  z-index: 2; /* Por encima de otros elementos */
+  left: 0;
+  top: 0;
+  width: 100%; /* Ocupa todo el ancho */
+  height: 100%; /* Ocupa todo el alto */
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+  display: flex; /* Flexbox */
+  justify-content: center; /* Centrando horizontalmente */
+  align-items: center; /* Centrando verticalmente */
+}
+
+.formulario-pqr form {
+  display: flex;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%; /* Ajuste de ancho para adaptarse mejor en pantallas pequeñas */
+  max-width: 600px; /* Ancho máximo del formulario */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  position: relative;
+  flex-direction: column;
+  align-items: stretch; /* Alinea los elementos para que ocupen el ancho completo */
+}
+
+.formulario-pqr form img {
+  width: 50px;
+  margin-bottom: 20px;
+  align-self: center; /* Centra la imagen horizontalmente */
+}
+
+.formulario-pqr form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
+  text-align: left; /* Alineación del texto del label a la izquierda */
+}
+
+.formulario-pqr input,
+.formulario-pqr textarea {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  outline: none;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.formulario-pqr textarea {
+  resize: vertical;
+}
+
+.formulario-pqr .button-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.formulario-pqr button {
+  background-color: rgb(57, 169, 0);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.formulario-pqr button:hover {
+  background-color: rgb(45, 142, 0);
+  transform: scale(1.05);
+}
+
+#cerrarPQR {
+  background-color: #e74c3c;
+}
+
+#cerrarPQR:hover {
+  background-color: #c0392b;
+}
+
+.no-foros {
+  color: #ff0000; 
+  font-size: 18px; 
+  text-align: center;
+  margin: 20px;
+  font-weight: bold; 
+}
+
+main {
+  padding: 20px;
+}
+
+.autor-fecha {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.contenido {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.estrellas {
+  display: flex;
+  align-items: center;
+}
+
+.estrellas input {
+  display: none; /* Oculta los radios */
+}
+
+.estrellas label {
+  font-size: 24px;
+  color: #ccc; /* Color por defecto */
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+/* Color al pasar el mouse sobre las estrellas */
+.estrellas label:hover,
+.estrellas label:hover ~ label {
+  color: #ffcc00; /* Color dorado al seleccionar */
+}
+
+/* Colorear las estrellas de izquierda a derecha al seleccionar */
+.estrellas input:checked + label {
+  color: #ffcc00; /* Color dorado solo para la estrella seleccionada */
+}
+
+/* Colorear todas las estrellas a la izquierda de la estrella seleccionada */
+.estrellas input:checked ~ label {
+  color: #ffcc00; /* Color dorado para las estrellas a la izquierda */
+}
+
+
+
+
+/* Mejoras generales en el estilo del foro */
+.foro-item {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 10px 0;
+  background-color: #f9f9f9;
+  transition: box-shadow 0.3s;
+}
+
+.foro-item:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+.btn-comentar {
+  background-color: rgb(57, 169, 0);
+  color: white;
+  padding: 5px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-comentar:hover {
+  background-color: rgb(45, 142, 0);
+}
+.botones-comentarios {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-comentar, .btn-ver-comentarios {
+  background-color: #4CAF50; /* Color de fondo */
+  color: white; /* Texto blanco */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  padding: 10px 20px; /* Relleno */
+  cursor: pointer; /* Cambiar cursor */
+}
+
+/* Estilos generales del formulario de comentarios */
+#formComentario {
+display: flex;
+flex-direction: column;
+background-color: #fff; 
+padding: 20px; 
+border-radius: 12px; 
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+width: 90%; 
+max-width: 500px;
+margin: 20px auto;
+}
+
+
+#formComentario label {
+font-weight: bold; 
+margin-bottom: 8px; 
+color: #333;
+}
+
+/* Estilo para los campos de texto */
+#formComentario input[type="text"],
+#formComentario input[type="password"],
+#formComentario textarea {
+padding: 12px;
+border: 1px solid #ddd; 
+border-radius: 8px; 
+outline: none; 
+margin-bottom: 20px; 
+transition: border-color 0.3s; 
+margin-top: 10px;
+}
+
+#formComentario input[type="text"],
+#formComentario input[type="password"],
+#formComentario textarea {
+width: 100%; 
+padding: 12px;
+border: 1px solid #ddd;
+border-radius: 8px;
+outline: none;
+margin-bottom: 20px;
+transition: border-color 0.3s;
+margin-top: 10px;
+}
+
+
+#usuarioInput {
+display: flex;
+flex-direction: column;
+}
+
+
+
+#formComentario textarea {
+resize: vertical; 
+}
+
+#formComentario button[type="submit"] {
+background-color: rgb(57, 169, 0); 
+color: white; 
+padding: 10px 20px; 
+border: none; 
+border-radius: 8px; 
+cursor: pointer; 
+transition: background-color 0.3s, transform 0.3s; 
+}
+
+
+#formComentario button[type="submit"]:hover {
+background-color: rgb(45, 142, 0); 
+transform: scale(1.05); 
+}
+
+
+#formComentario #cerrar {
+background-color: #e74c3c; 
+color: white; 
+border: none; 
+border-radius: 8px; 
+padding: 10px 20px; 
+cursor: pointer; 
+transition: background-color 0.3s, transform 0.3s; 
+}
+
+
+#formComentario #cerrar:hover {
+background-color: #c0392b; 
+transform: scale(1.05); 
+}
+
+
+
+

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse</title>
+    <link rel="stylesheet" href="../css/Registro.css">
+    <script>
+         function obtenerDatos() {
+                const usuario = document.getElementById('usuario').value;
+                const contraseña = document.getElementById('contraseña').value;
+                const confirmarContraseña = document.getElementById('Confirmar_contraseña').value;
+
+                const datosPersonales = {
+                    rolSeleccionado: sessionStorage.getElementById('rolSeleccionado'),
+                    name: sessionStorage.getItem('name'),
+                    first_Lastname: sessionStorage.getItem('first_Lastname'),
+                    second_Lastname: sessionStorage.getItem('second_Lastname'),
+                    date_of_birth: sessionStorage.getItem('date_of_birth'),
+                    tipoDocumento: sessionStorage.getItem('tipoDocumento'),
+                    numeroDocumento: sessionStorage.getItem('numeroDocumento'),
+                    trimestre: sessionStorage.getItem('trimestre'),
+                    correo: sessionStorage.getItem('correo'),
+                    confirmarCorreo: sessionStorage.getItem('confirmarCorreo'),
+                    numeroTelefonico: sessionStorage.getItem('numeroTelefonico'),
+                    usuario: usuario,
+                    contraseña: contraseña,
+                    confirmarContraseña: confirmarContraseña
+                };
+
+                // Convertir los datos en formato adecuado para enviar al servidor
+                document.getElementById('datosPersonales').value = JSON.stringify(datosPersonales);
+            }
+        function validarFormulario() {
+            const nombre = document.getElementById('usuario');
+            const contraseña = document.getElementById('contraseña');
+            const confirmar_contraseña = document.getElementById('Confirmar_contraseña');
+            const SoloLetras = /^[a-zA-Z]+$/;
+
+            nombre.classList.remove('campo-obligatorio');
+            contraseña.classList.remove('campo-obligatorio');
+            confirmar_contraseña.classList.remove('campo-obligatorio');
+
+            let valid = true;
+
+            if (nombre.value.trim() === '') {
+                nombre.classList.add('campo-obligatorio');
+                valid = false;
+            }
+            if (contraseña.value.trim() === '') {
+                contraseña.classList.add('campo-obligatorio');
+                valid = false;
+            }
+            if (confirmar_contraseña.value.trim() === '') {
+                confirmar_contraseña.classList.add('campo-obligatorio');
+                valid = false;
+            }
+            if (!SoloLetras.test(nombre.value)) {
+                alert('El nombre de usuario debe contener solo letras.');
+                nombre.classList.add('campo-obligatorio');
+                valid = false; 
+            }
+            if (contraseña.value.trim() !== confirmar_contraseña.value.trim()) {
+                alert('La contraseña no coincide');
+                confirmar_contraseña.classList.add('campo-obligatorio');
+                valid = false;
+            }
+
+            if (!valid) {
+                alert('Por favor, complete todos los campos obligatorios.');
+                return false;
+            }
+
+            obtenerDatos();
+            return true; // Permite que el formulario se envíe
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">  
+            <img src="../img/Logo-removebg-preview (1).png" alt="">
+            <h1>KASH</h1>
+        </div>
+        <nav>
+            <li><a href="../html/Principal.html">volver al inicio</a></li>
+        </nav>
+    </header>
+    <main>
+        <form action="../php/registrar.php" method="post" onsubmit="return validarFormulario()">
+            <h4>Crear cuenta</h4>
+            <label for="usuario">
+                <input id="usuario" class="Pregunta" type="text" name="usuario" placeholder="Nombre Usuario">
+            </label>
+            <label for="contraseña">
+                <input id="contraseña" class="Pregunta" type="password" name="contraseña" placeholder="Contraseña">
+            </label>
+            <label for="Confirmar_contraseña">
+                <input id="Confirmar_contraseña" class="Pregunta" type="password" name="Confirmar_contraseña" placeholder="Confirmar contraseña">
+            </label>
+            <input type="hidden" id="datosPersonales" name="datosPersonales">
+            <input type="submit" id="botonEnlace" class="boton" value="Registrar">
+            <p><a href="#">¿Ya tengo cuenta?</a></p>
+        </form>
+    </main>         
+</body>
+</html>

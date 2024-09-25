@@ -1,0 +1,154 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registrarse</title>
+        <link rel="stylesheet" href="../css/Registro.css">
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+        const imagenAsesor = document.getElementById("asesor");
+        const imagenAprendiz = document.getElementById("aprendiz");
+
+        function manejarClick(event) {
+            imagenAsesor.classList.remove("brillosa");
+            imagenAprendiz.classList.remove("brillosa");
+            event.target.classList.add("brillosa");
+            selectRole(event.target.id);
+        }
+
+        imagenAsesor.addEventListener("click", manejarClick);
+        imagenAprendiz.addEventListener("click", manejarClick);
+        });
+
+        let selectedRole = null;
+        function selectRole(role) {
+            selectedRole = role;
+            document.querySelectorAll('.usuario').forEach(img => img.classList.remove('selected'));
+            document.getElementById(role).classList.add('selected');
+            document.getElementById('rolSeleccionado').value = role;
+        }
+
+        function guardarDatos() {
+                sessionStorage.setItem('rolSeleccionado', document.getElementById('rolSeleccionado').value);
+                sessionStorage.setItem('name', document.getElementById('name').value);
+                sessionStorage.setItem('first_Lastname', document.getElementById('first_Lastname').value);
+                sessionStorage.setItem('second_Lastname', document.getElementById('second_Lastname').value);
+                sessionStorage.setItem('date_of_birth', document.getElementById('date_of_birth').value);
+                sessionStorage.setItem('tipoDocumento', document.getElementById('tipoDocumento').value);
+                sessionStorage.setItem('numeroDocumento', document.getElementById('numeroDocumento').value);
+                sessionStorage.setItem('trimestre', document.getElementById('trimestre').value);
+
+            }
+        
+        function validarFormulario(event) {
+        event.preventDefault();
+        
+            const rolSeleccionado= document.getElementById('rolSeleccionado');
+            const name = document.getElementById("name");
+            const first_Lastname = document.getElementById("first_Lastname");
+            const second_Lastname= document.getElementById('second_Lastname');
+            const date_of_birth=document.getElementById('date_of_birth');
+            const tipoDocumento = document.getElementById("Tipo_Documento");
+            const numeroDocumento = document.getElementById("Numero_Documento");
+            const trimestre = document.getElementById("Trimestre");
+
+        name.classList.remove('campo-obligatorio');
+        first_Lastname.classList.remove('campo-obligatorio');
+        tipoDocumento.classList.remove('campo-obligatorio');
+        numeroDocumento.classList.remove('campo-obligatorio');
+        trimestre.classList.remove('campo-obligatorio');
+
+        let valid = true;
+
+        if (name.value.trim() === '') {
+            name.classList.add('campo-obligatorio');
+            valid = false;
+        }
+        if (first_Lastname.value.trim() === '') {
+            first_Lastname.classList.add('campo-obligatorio');
+            valid = false;
+        }
+        if (tipoDocumento.value.trim() === '') {
+            tipoDocumento.classList.add('campo-obligatorio');
+            valid = false;
+        }
+        if (numeroDocumento.value.trim() === '') {
+            numeroDocumento.classList.add('campo-obligatorio');
+            valid = false;
+        }
+        if (trimestre.value.trim() === '') {
+            trimestre.classList.add('campo-obligatorio');
+            valid = false;
+        }
+
+        if (!selectedRole) {
+            alert('Por favor, elige un rol (asesor o aprendiz) antes de continuar.');
+            valid = false;
+        }
+
+        if (!valid) {
+            alert('Por favor, complete todos los campos obligatorios.');
+            return;
+        }
+            guardarDatos();
+            window.location.href = "../html/Registro2.html";
+        }   
+        </script>
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <img src="../img/logo kash.png" alt="">
+                <h1>KASH</h1>
+            </div>
+        </header>
+        <main>
+            <form onsubmit="validarFormulario();" action="Registro2.html" method="post">
+                <h4>DATOS PERSONALES</h4>
+                <div class="imagen">
+                    <input type="hidden" name="rolSeleccionado" id="rolSeleccionado" value="">
+
+                    <figure>
+                        <img id="asesor" class="usuario" src="../img/asesor.png" alt="asesor" onclick="selectRole('asesor')">
+                        <figcaption>asesor</figcaption>
+                    </figure>
+            
+                    <figure>
+                        <img id="aprendiz" class="usuario" src="../img/aprendiz.png" alt="aprendiz" onclick="selectRole('aprendiz')">
+                        <figcaption>aprendiz</figcaption>
+                    </figure>
+                </div>
+                <label for="name">
+                    <input id="name" class="Pregunta" type="text" name="name" placeholder="Nombre completo" >
+                </label>
+                <label for="first_Lastname">
+                    <input id="first_Lastname" class="Pregunta" type="text" name="first_Lastname" placeholder="Primer apellido">
+                </label>
+                <label for="second_Lastname">
+                    <input id="second_Lastname" class="Pregunta" type="text" name="second_Lastname" placeholder="Segundo apellido">
+                </label>
+                <label for="date_of_birth">
+                    <input id="date_of_birth" class="Pregunta" type="date" name="date_of_birth" placeholder="fecha de nacimiento" >
+                </label>
+                <label for="Tipo_Documento">
+                    <input id="Tipo_Documento" class="Pregunta" list="Tipo" placeholder="Tipo de documento" >
+                    <datalist id="Tipo">
+                        <option value="Cedula extranjera"></option>
+                        <option value="Cedula de ciudadania"></option>
+                        <option value="Tarjeta de identidad"></option>
+                    </datalist>
+                </label>
+                <label for="Numero_Documento">
+                    <input id="Numero_Documento" class="Pregunta" type="text" name="Numero_Documento" placeholder="Numero de documento" >
+                </label>
+                <label for="Trimestre">
+                    <input id="Trimestre" class="Pregunta" type="text" name="Trimestre" placeholder="Trimestre" >
+                </label>
+                <button type="submit" class="boton">Continuar</button>
+                <p><a href="../html/inicio_sesion.html">ya tengo cuenta</a></p>
+            </form>
+        </main>
+    </body>
+    </html>
+    
